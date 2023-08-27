@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Notes{% endblock %}
+{% block body %}
+    <h1>Notes</h1>
+    <p>Update the form below to add notes.</p>
+    <form action="{{ url_for('note.index') }}" method="post">
+        <label for="note">Note:</label>
+        <input type="text" name="title" id="title">
+        <input type="submit" value="Add Note">
+    </form>
+    <h2>Added notes</h2>
+    <ul>
+        {% for note in notes %}
+            <li>{{ note["id"] }}: {{ note["title"] }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
